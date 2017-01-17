@@ -3,6 +3,12 @@ import sys
 #import psutil
 import shutil
 
+def pathexists(checkpath):
+    if os.path.exists(checkpath):
+        pass
+    else:
+        print(checkpath," не найден")
+
 def work_func():
     print("Это похвально!")
     action=""
@@ -22,6 +28,7 @@ def work_func():
                     print(i)
         elif action == '2':
             filename=input("Укажите путь до файла: ")
+            pathexists(filename)
             newfilename=filename+".dupl"
             shutil.copy(filename,newfilename)
             if os.path.exists(newfilename):
@@ -39,7 +46,7 @@ def work_func():
                     k +=1
                 else:
                     print("файл НЕподходит, пропускаем: " + i)
-                print("Удалено "+str(k)+" файлов.")
+            print("Удалено "+str(k)+" файлов.")
         elif action=="q":
             pass
         else:
